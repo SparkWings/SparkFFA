@@ -6,7 +6,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jbltd.ffa.events.CombatKillEvent;
-import org.jbltd.ffa.listeners.CombatListener;
 import org.jbltd.ffa.managers.CombatManager;
 
 public class GapplerKillstreak extends Killstreak

@@ -6,7 +6,6 @@ org\jbltd\ffa\Main.class
 org\jbltd\ffa\listeners\Basic.class
 org\jbltd\ffa\util\GhostFactory$1.class
 org\jbltd\ffa\listeners\CombatListener.class
-org\jbltd\ffa\util\F$1.class
 org\jbltd\ffa\events\CombatKillEvent.class
 org\jbltd\ffa\listeners\InventoryListener.class
 org\jbltd\ffa\util\F.class

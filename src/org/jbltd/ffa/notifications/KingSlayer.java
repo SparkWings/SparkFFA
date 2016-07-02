@@ -11,16 +11,16 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jbltd.ffa.events.CombatKillEvent;
 import org.jbltd.ffa.managers.CombatManager;
-import org.jbltd.ffa.util.F;
+import org.jbltd.ffa.managers.NotificationManager;
 import org.jbltd.ffa.util.Notification;
 import org.jbltd.ffa.util.NotificationType;
 
 public class KingSlayer extends Notification
 {
 
-	public KingSlayer(JavaPlugin plugin, CombatManager manager)
+	public KingSlayer(JavaPlugin plugin, CombatManager manager, NotificationManager nmanager)
 	{
-		super(plugin, manager, NotificationType.KINGSLAYER);
+		super(plugin, manager, nmanager, NotificationType.KINGSLAYER);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -47,7 +47,7 @@ public class KingSlayer extends Notification
 			Player uno = Bukkit.getPlayer(order.get(0));
 			if (killed == uno)
 			{
-				F.notifications.get(killer.getUniqueId()).add(NotificationType.KINGSLAYER);
+				getNotificationManager().notifications.get(killer.getUniqueId()).add(NotificationType.KINGSLAYER);
 				System.out.println("Added king");
 			}
 		}

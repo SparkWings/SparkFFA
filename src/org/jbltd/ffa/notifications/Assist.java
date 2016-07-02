@@ -11,6 +11,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jbltd.ffa.events.CombatKillEvent;
 import org.jbltd.ffa.managers.CombatManager;
+import org.jbltd.ffa.managers.NotificationManager;
 import org.jbltd.ffa.util.F;
 import org.jbltd.ffa.util.Notification;
 import org.jbltd.ffa.util.NotificationType;
@@ -18,9 +19,9 @@ import org.jbltd.ffa.util.NotificationType;
 public class Assist extends Notification
 {
 
-	public Assist(JavaPlugin plugin, CombatManager manager)
+	public Assist(JavaPlugin plugin, CombatManager manager, NotificationManager nmanager)
 	{
-		super(plugin, manager, NotificationType.ASSIST);
+		super(plugin, manager, nmanager, NotificationType.ASSIST);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -73,7 +74,7 @@ public class Assist extends Notification
 			Player k = Bukkit.getPlayer(u);
 			if (k != killer)
 			{
-				F.notifications.get(killer.getUniqueId()).add(NotificationType.ASSIST);
+				getNotificationManager().notifications.get(killer.getUniqueId()).add(NotificationType.ASSIST);
 			}
 
 			i++;

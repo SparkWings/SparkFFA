@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.inventivetalent.rpapi.Status;
+import org.jbltd.ffa.util.InventoryUtil;
 
 import de.inventivegames.rpapi.ResourcePackStatusEvent;
 
@@ -22,6 +23,10 @@ public class ResourcepackListener implements Listener
 		if(s == Status.DECLINED)
 		{
 			e.getPlayer().kickPlayer(ChatColor.BLUE+"Game> "+ChatColor.RED+"You must accept our resourcepack to play FFA!");
+		}
+		if(s == Status.SUCCESSFULLY_LOADED)
+		{
+			InventoryUtil.buildPerkInventory(e.getPlayer());
 		}
 	}
 	

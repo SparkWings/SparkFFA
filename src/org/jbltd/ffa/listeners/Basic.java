@@ -11,9 +11,8 @@ import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.jbltd.ffa.Main;
+import org.jbltd.ffa.managers.NotificationManager;
 import org.jbltd.ffa.util.DatabaseManager;
-import org.jbltd.ffa.util.F;
 import org.jbltd.ffa.util.InventoryUtil;
 
 import de.inventivegames.rpapi.ResourcePackAPI;
@@ -22,11 +21,11 @@ import de.inventivegames.rpapi.ResourcePackAPI;
 public class Basic implements Listener
 {
 
-	private Main plugin;
+	private NotificationManager manager;
 
-	public Basic(Main plugin)
+	public Basic(NotificationManager manager)
 	{
-		this.plugin = plugin;
+		this.manager = manager;
 	}
 
 	@EventHandler
@@ -54,7 +53,7 @@ public class Basic implements Listener
 		
 		e.setJoinMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "]" + " " + e.getPlayer().getName());
 		
-		F.notifications.put(e.getPlayer().getUniqueId(), new ArrayList<>());
+		manager.notifications.put(e.getPlayer().getUniqueId(), new ArrayList<>());
 
 		InventoryUtil.equip(e.getPlayer());
 
