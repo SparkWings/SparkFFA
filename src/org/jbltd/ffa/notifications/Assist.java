@@ -60,7 +60,7 @@ public class Assist extends Notification
 
 	}
 	
-	@Override
+	@EventHandler
 	public void listen(CombatKillEvent e)
 	{
 		Player killer = e.getKiller();

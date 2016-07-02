@@ -1,6 +1,7 @@
 package org.jbltd.ffa.notifications;
 
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jbltd.ffa.events.CombatKillEvent;
 import org.jbltd.ffa.managers.CombatManager;
@@ -16,7 +17,7 @@ public class Survivor extends Notification
 		super(plugin, manager, NotificationType.SURVIVOR);
 	}
 
-	@Override
+	@EventHandler
 	public void listen(CombatKillEvent e)
 	{
 		

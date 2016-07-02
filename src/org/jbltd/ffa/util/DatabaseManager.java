@@ -76,7 +76,7 @@ public class DatabaseManager
 		String uuid = player.getUniqueId().toString();
 
 		Statement s = DB.getConnection().createStatement();
-		s.executeUpdate("INSERT INTO `FFA` (`UUID`,`Kills`,`Deaths`) VALUES ('" + name + "','" + uuid + "',0,0);");
+		s.executeUpdate("INSERT INTO `FFA` (`UUID`,`Kills`,`Deaths`) VALUES ('" + uuid + "',0,0);");
 
 	}
 

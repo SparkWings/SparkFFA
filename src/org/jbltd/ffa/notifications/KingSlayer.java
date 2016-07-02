@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jbltd.ffa.events.CombatKillEvent;
 import org.jbltd.ffa.managers.CombatManager;
@@ -23,7 +24,7 @@ public class KingSlayer extends Notification
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+	@EventHandler
 	public void listen(CombatKillEvent e)
 	{
 		List<UUID> order = new ArrayList<>();

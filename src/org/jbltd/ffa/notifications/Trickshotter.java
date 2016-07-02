@@ -2,6 +2,7 @@ package org.jbltd.ffa.notifications;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jbltd.ffa.events.CombatKillEvent;
 import org.jbltd.ffa.managers.CombatManager;
@@ -18,7 +19,7 @@ public class Trickshotter extends Notification
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+	@EventHandler
 	public void listen(CombatKillEvent e)
 	{
 		
