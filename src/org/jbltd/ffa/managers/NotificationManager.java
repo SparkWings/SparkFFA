@@ -2,7 +2,6 @@ package org.jbltd.ffa.managers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.UUID;
 
 import org.bukkit.Achievement;

@@ -1,7 +1,5 @@
 package org.jbltd.ffa.listeners;
 
-import java.util.ArrayList;
-
 import org.bukkit.Achievement;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
@@ -11,7 +9,6 @@ import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.jbltd.ffa.managers.NotificationManager;
 import org.jbltd.ffa.util.DatabaseManager;
 import org.jbltd.ffa.util.InventoryUtil;
 
@@ -21,12 +18,6 @@ import de.inventivegames.rpapi.ResourcePackAPI;
 public class Basic implements Listener
 {
 
-	private NotificationManager manager;
-
-	public Basic(NotificationManager manager)
-	{
-		this.manager = manager;
-	}
 
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e)

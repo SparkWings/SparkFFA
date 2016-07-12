@@ -3,7 +3,6 @@ package org.jbltd.ffa;
 import java.sql.SQLException;
 
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jbltd.ffa.killstreaks.GapplerKillstreak;
 import org.jbltd.ffa.killstreaks.Killstreak;
@@ -65,7 +64,7 @@ public class Main extends JavaPlugin
 		Killstreak.allStreaks.add(new GapplerKillstreak(this, manager));
 		Killstreak.allStreaks.add(new SupplyDrop(this, manager));
 
-		getServer().getPluginManager().registerEvents(new Basic(nmanager), this);
+		getServer().getPluginManager().registerEvents(new Basic(), this);
 		getServer().getPluginManager().registerEvents(new InventoryListener(), this);
 		getServer().getPluginManager().registerEvents(listener, this);
 		getServer().getPluginManager().registerEvents(manager, this);
