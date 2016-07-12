@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.UUID;
 
+import org.bukkit.Achievement;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.jbltd.ffa.util.NotificationType;
 import org.jbltd.ffa.util.UpdateEvent;
 import org.jbltd.ffa.util.UpdateType;
@@ -17,11 +19,17 @@ import org.jbltd.ffa.util.UpdateType;
 public class NotificationManager implements Listener
 {
 
-
 	public HashMap<UUID, ArrayList<NotificationType>> notifications = new HashMap<>();
 
 	public NotificationManager()
 	{}
+
+	@EventHandler
+	public void onJoin(PlayerJoinEvent e)
+	{
+
+		notifications.put(e.getPlayer().getUniqueId(), new ArrayList<>());
+	}
 
 	@EventHandler
 	public void send(UpdateEvent e)
@@ -35,21 +43,20 @@ public class NotificationManager implements Listener
 		for (Player player : Bukkit.getOnlinePlayers())
 		{
 
-			ArrayList<NotificationType> playerQueued = notifications.get(player.getUniqueId());
-
-			Iterator<NotificationType> o = playerQueued.iterator();
-
-			while (o.hasNext())
+			if (notifications.get(player.getUniqueId()).size() >= 1)
 			{
-				NotificationType nt = o.next();
 
-				player.removeAchievement(nt.getClientAchievement());
+				NotificationType nt = notifications.get(player.getUniqueId()).get(0);			
+
+				for (Achievement a : Achievement.values())
+				{
+					player.removeAchievement(a);
+				}
 				player.awardAchievement(nt.getClientAchievement());
-				player.sendMessage(ChatColor.MAGIC + "||| " + ChatColor.BOLD + nt.getNotifTitle() + " - " + ChatColor.WHITE + nt.getDescription() + ChatColor.MAGIC + " |||");
-				player.sendMessage("   \n");
-				player.sendMessage("   \n");
 
-				playerQueued.remove(nt);
+				player.sendMessage(ChatColor.MAGIC + "||| " + ChatColor.BOLD + nt.getNotifTitle() + " - " + ChatColor.WHITE + nt.getDescription() + ChatColor.MAGIC + " |||");
+				
+				notifications.get(player.getUniqueId()).remove(nt);
 				continue;
 			}
 		}

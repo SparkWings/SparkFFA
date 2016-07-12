@@ -13,10 +13,13 @@ public class Ghost extends Perk implements Runnable
 
 	private GhostFactory factory;
 
+	private static final String TITLE = "Ghost";
+	private static final String[] DESCRIPTION = new String[] { "25% visible to other players" };
+	private static final Material DISPLAY = Material.BARRIER;
+	
 	public Ghost(JavaPlugin plugin)
 	{
-		super(plugin, "Ghost", new String[]
-		{ "25% visible to other players" }, Material.BARRIER);
+		super(plugin, TITLE, DESCRIPTION, DISPLAY);
 
 		factory = new GhostFactory(plugin);
 

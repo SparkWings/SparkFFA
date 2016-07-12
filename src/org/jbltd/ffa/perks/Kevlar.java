@@ -10,10 +10,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Kevlar extends Perk
 {
 
+	private static final String TITLE = "Kevlar";
+	private static final String[] DESCRIPTION = new String[] { "Take 5% less damage", "Take no damage from bows" };
+	private static final Material DISPLAY = Material.OBSIDIAN;
+	
 	public Kevlar(JavaPlugin plugin)
 	{
-		super(plugin, "Kevlar", new String[]
-		{ "Take 5% less damage", "Take no damage from bows" }, Material.OBSIDIAN);
+		super(plugin, TITLE, DESCRIPTION, DISPLAY);
 
 	}
 

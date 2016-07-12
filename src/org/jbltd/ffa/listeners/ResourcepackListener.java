@@ -28,6 +28,10 @@ public class ResourcepackListener implements Listener
 		{
 			InventoryUtil.buildPerkInventory(e.getPlayer());
 		}
+		if(s == Status.ACCEPTED)
+		{
+			InventoryUtil.buildPerkInventory(e.getPlayer());
+		}
 	}
 	
 	

@@ -9,10 +9,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class BruteStrength extends Perk
 {
 
+	private static final String TITLE = "Brute Strength";
+	private static final String[] DESCRIPTION = new String[] { "Deal 15% more damage" };
+	private static final Material DISPLAY = Material.DIAMOND_AXE;
+	
 	public BruteStrength(JavaPlugin plugin)
 	{
-		super(plugin, "Brute Strength", new String[]
-		{ "Deal 15% more damage" }, Material.DIAMOND_AXE);
+		super(plugin, TITLE, DESCRIPTION, DISPLAY);
 		// TODO Auto-generated constructor stub
 	}
 

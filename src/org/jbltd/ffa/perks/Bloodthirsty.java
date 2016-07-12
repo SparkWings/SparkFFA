@@ -12,10 +12,13 @@ import org.jbltd.ffa.events.CombatKillEvent;
 public class Bloodthirsty extends Perk
 {
 
+	private static final String TITLE = "Bloodthirsty";
+	private static final String[] DESCRIPTION = new String[] { "Receive regeneration for 2 seconds after a kill" };
+	private static final Material DISPLAY = Material.POTION;
+	
 	public Bloodthirsty(JavaPlugin plugin)
 	{
-		super(plugin, "Bloodthirsty", new String[]
-		{ "Receive regeneration for 2 seconds after a kill" }, Material.POTION);
+		super(plugin, TITLE, DESCRIPTION, DISPLAY);
 		// TODO Auto-generated constructor stub
 	}
 

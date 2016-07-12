@@ -3,22 +3,12 @@ package org.jbltd.ffa.util;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jbltd.ffa.api.JSONUtil;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 
 public class DatabaseManager
 {
@@ -114,6 +104,48 @@ public class DatabaseManager
 
 	}
 
+	public static void incrementPlayerKills(Player player)
+	{
+		try
+		{
+			if (!DB.checkConnection())
+			{
+				DB.openConnection();
+			}
+
+			String uuid = player.getUniqueId().toString();
+
+			Statement s = DB.getConnection().createStatement();
+
+			s.executeUpdate("UPDATE `FFA` SET `Kills`='" + (getPlayerKills(player) + 1) + "' WHERE `UUID`='" + uuid + "';");
+		} catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static void incrementPlayerDeaths(Player player)
+	{
+		try
+		{
+			if (!DB.checkConnection())
+			{
+				DB.openConnection();
+			}
+
+			String uuid = player.getUniqueId().toString();
+
+			Statement s = DB.getConnection().createStatement();
+
+			s.executeUpdate("UPDATE `FFA` SET `Deaths`='" + (getPlayerDeaths(player) + 1) + "' WHERE `UUID`='" + uuid + "';");
+		} catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	public static int getPlayerDeaths(Player player) throws Exception
 	{
 
@@ -152,70 +184,6 @@ public class DatabaseManager
 		return playerStats;
 	}
 
-	public static JSONArray buildJSON(String key, Player player)
-	{
 
-		try
-		{
-			
-			
-			
-			JSONArray array = JSONUtil.buildArray(getPlayerStats(player));
-
-			Gson gson = new GsonBuilder().setPrettyPrinting().create();
-			JsonParser jp = new JsonParser();
-			JsonElement je = jp.parse(array.toJSONString());
-			String fin = gson.toJson(je);
-
-			System.out.println(fin);
-
-			return array;
-
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-
-		return null;
-
-	}
-
-	public static String generateAPIKey() throws Exception
-	{
-		if (!DB.checkConnection())
-		{
-			DB.openConnection();
-		}
-
-		String key = UUID.randomUUID().toString();
-
-		Statement s = DB.getConnection().createStatement();
-		s.executeUpdate("INSERT INTO `APIKEYS` (`Key`,`Calls`) VALUES ('" + key + "',0);");
-
-		return key;
-	}
-
-	@SuppressWarnings("unchecked")
-	public static void main(String[] args)
-	{
-
-		JSONArray array = new JSONArray();
-		JSONObject o = new JSONObject();
-		o.put("UUID", UUID.randomUUID());
-		JSONObject o2 = new JSONObject();
-		o2.put("Kills", "1253");
-		JSONObject o3 = new JSONObject();
-		o3.put("Deaths", "12");
-
-		array.addAll(Arrays.asList(o, o2, o3));
-
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		JsonParser jp = new JsonParser();
-		JsonElement je = jp.parse(array.toJSONString());
-		String fin = gson.toJson(je);
-
-		System.out.println(fin);
-
-	}
 
 }

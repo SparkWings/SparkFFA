@@ -15,10 +15,13 @@ import org.bukkit.potion.PotionEffectType;
 public class Lightweight extends Perk implements Runnable
 {
 
+	private static final String TITLE = "Lightweight";
+	private static final String[] DESCRIPTION = new String[] { "Move 7% faster", "Take no fall damage" };
+	private static final Material DISPLAY = Material.FEATHER;
+	
 	public Lightweight(JavaPlugin plugin)
 	{
-		super(plugin, "Lightweight", new String[]
-		{ "Move 7% faster", "Take no fall damage" }, Material.FEATHER);
+		super(plugin, TITLE, DESCRIPTION, DISPLAY);
 	}
 
 	@Override

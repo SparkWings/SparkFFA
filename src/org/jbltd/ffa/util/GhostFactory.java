@@ -136,7 +136,7 @@ public class GhostFactory
 	}
 
 	/**
-	 * Set wheter or not a given player is a ghost.
+	 * Set whether or not a given player is a ghost.
 	 * 
 	 * @param player
 	 *            - the player to set as a ghost.

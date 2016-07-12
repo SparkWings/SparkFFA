@@ -31,7 +31,7 @@ public class Basic implements Listener
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e)
 	{
-
+		
 		ResourcePackAPI.setResourcepack(e.getPlayer(), "http://download857.mediafire.com/4k109akhamng/2cy63bbfx5h263i/pack.zip");
 		
 		for(Achievement a : Achievement.values())
@@ -52,8 +52,6 @@ public class Basic implements Listener
 		}
 		
 		e.setJoinMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "]" + " " + e.getPlayer().getName());
-		
-		manager.notifications.put(e.getPlayer().getUniqueId(), new ArrayList<>());
 
 		InventoryUtil.equip(e.getPlayer());
 

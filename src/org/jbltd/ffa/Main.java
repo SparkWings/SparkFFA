@@ -33,8 +33,6 @@ import net.minecraft.server.v1_8_R3.MinecraftServer;
 public class Main extends JavaPlugin
 {
 
-	private static FileConfiguration config;
-
 	public void onEnable()
 	{
 
@@ -72,39 +70,17 @@ public class Main extends JavaPlugin
 		getServer().getPluginManager().registerEvents(listener, this);
 		getServer().getPluginManager().registerEvents(manager, this);
 		getServer().getPluginManager().registerEvents(new ResourcepackListener(), this);
-		getServer().getPluginManager().registerEvents(new NotificationManager(), this);
+		getServer().getPluginManager().registerEvents(nmanager, this);
 
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, ghost, 0L, 20L);
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, lightweight, 0L, 20L);
 
 		new UpdateTask(this);
 
-		config = getConfig();
-
-		try
-		{
-			config.addDefault("apikey", DatabaseManager.generateAPIKey());
-		} catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		config.options().copyDefaults(true);
-		saveConfig();
-
 		System.out.println(F.info("Game", true, "Game ready."));
 
 		MinecraftServer.getServer().getPropertyManager().setProperty("debug", true);
 	}
 
-	public static FileConfiguration getConfiguration()
-	{
-		return config;
-	}
-
-	public static String getServerAPIKey()
-	{
-		return getConfiguration().getString("apikey");
-	}
 
 }

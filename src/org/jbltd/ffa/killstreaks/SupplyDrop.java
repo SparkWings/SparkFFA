@@ -24,12 +24,14 @@ public class SupplyDrop extends Killstreak
 {
 
 	public CombatManager manager;
-	public HashSet<ItemStack> toRemove = new HashSet<>();
+	private HashSet<ItemStack> _toRemove = new HashSet<>();
+	private static final String TITLE = "Supply Drop";
+	private static final String[] DESCRIPTION = new String[] { "After 3 kills receive a supply drop with", "3 useful items" };
+	private static final Material DISPLAY = Material.TRAPPED_CHEST;
 
 	public SupplyDrop(JavaPlugin plugin, CombatManager manager)
 	{
-		super(plugin, "Supply Drop", new String[]
-		{ "After 3 kills receive a supply drop with", "3 useful items" }, Material.TRAPPED_CHEST);
+		super(plugin, TITLE, DESCRIPTION, DISPLAY);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -48,7 +50,7 @@ public class SupplyDrop extends Killstreak
 
 			if (calc == Math.round(calc))
 			{
-				ItemStack streakItem = new ItemStack(Material.TRAPPED_CHEST);
+				ItemStack streakItem = new ItemStack(DISPLAY);
 				ItemMeta sm = streakItem.getItemMeta();
 
 				sm.setDisplayName(ChatColor.GOLD + "Supply Drop: Click To Activate");
@@ -70,7 +72,7 @@ public class SupplyDrop extends Killstreak
 
 		if (streakHolder.contains(player.getUniqueId()))
 		{
-			ItemStack streakItem = new ItemStack(Material.TRAPPED_CHEST);
+			ItemStack streakItem = new ItemStack(DISPLAY);
 			ItemMeta sm = streakItem.getItemMeta();
 
 			sm.setDisplayName(ChatColor.GOLD + "Supply Drop: Click To Activate");
@@ -82,7 +84,7 @@ public class SupplyDrop extends Killstreak
 			{
 				player.getInventory().remove(streakItem);
 				player.getWorld().dropItemNaturally(player.getLocation(), chest).setPickupDelay(Integer.MAX_VALUE);
-				toRemove.add(chest);
+				_toRemove.add(chest);
 				Location loc = player.getLocation().clone();
 
 				Bukkit.getScheduler().scheduleSyncDelayedTask(getPlugin(), new Runnable()
@@ -92,9 +94,9 @@ public class SupplyDrop extends Killstreak
 					public void run()
 					{
 
-						for (ItemStack i : toRemove)
+						for (ItemStack i : _toRemove)
 						{
-							toRemove.remove(i);
+							_toRemove.remove(i);
 							i.setType(Material.AIR);
 							Firework firework = player.getWorld().spawn(loc, Firework.class);
 							FireworkMeta data = (FireworkMeta) firework.getFireworkMeta();
