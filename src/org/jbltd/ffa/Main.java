@@ -72,6 +72,7 @@ public class Main extends JavaPlugin
 		getServer().getPluginManager().registerEvents(new ResourcepackListener(), this);
 		getServer().getPluginManager().registerEvents(nmanager, this);
 
+		
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, ghost, 0L, 20L);
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, lightweight, 0L, 20L);
 
