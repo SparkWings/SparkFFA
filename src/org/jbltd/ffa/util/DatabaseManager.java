@@ -12,7 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class DatabaseManager
 {
-
+ 
 	private JavaPlugin plugin;
 	public static MySQL DB;
 

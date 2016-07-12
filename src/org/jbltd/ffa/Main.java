@@ -44,7 +44,7 @@ public class Main extends JavaPlugin
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
+ 
 		Ghost ghost = new Ghost(this);
 		Lightweight lightweight = new Lightweight(this);
 		CombatManager manager = new CombatManager(this);
