@@ -25,6 +25,7 @@ import org.jbltd.ffa.perks.Lightweight;
 import org.jbltd.ffa.perks.Perk;
 import org.jbltd.ffa.util.DatabaseManager;
 import org.jbltd.ffa.util.F;
+import org.jbltd.ffa.util.InventoryOpenCommand;
 import org.jbltd.ffa.util.UpdateTask;
 
 import net.minecraft.server.v1_8_R3.MinecraftServer;
@@ -71,6 +72,7 @@ public class Main extends JavaPlugin
 		getServer().getPluginManager().registerEvents(new ResourcepackListener(), this);
 		getServer().getPluginManager().registerEvents(nmanager, this);
 
+		getCommand("perk").setExecutor(new InventoryOpenCommand());
 		
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, ghost, 0L, 20L);
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, lightweight, 0L, 20L);

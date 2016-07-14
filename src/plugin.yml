@@ -2,3 +2,6 @@ name: FFA
 main: org.jbltd.ffa.Main
 version: 1.0
 author: SparkWings
+
+commands:
+    perk:

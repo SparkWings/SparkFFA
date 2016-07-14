@@ -45,6 +45,8 @@ public class Basic implements Listener
 		e.setJoinMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "]" + " " + e.getPlayer().getName());
 
 		InventoryUtil.equip(e.getPlayer());
+		
+		e.getPlayer().sendMessage(ChatColor.RED+""+ChatColor.BOLD+"Make sure you get your perks and killstreaks! /perk");
 
 	}
 
