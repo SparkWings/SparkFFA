@@ -21,7 +21,8 @@ public class GapplerKillstreak extends Killstreak
 	public GapplerKillstreak(JavaPlugin plugin, CombatManager manager)
 	{
 		super(plugin, NAME, DESCRIPTION, DISPLAY);
-		// TODO Auto-generated constructor stub
+		
+		this.manager = manager;
 	}
 
 	@EventHandler
@@ -32,7 +33,7 @@ public class GapplerKillstreak extends Killstreak
 		if (streakHolder.contains(p.getUniqueId()))
 		{
 
-			if (manager.killStreaks.get(p.getUniqueId()) <= 4 && manager.killStreaks.get(p.getUniqueId()) >= 2)
+			if (manager.killStreaks.get(p.getUniqueId()) <= 4)
 			{
 				p.getInventory().addItem(new ItemStack(DISPLAY));
 				return;

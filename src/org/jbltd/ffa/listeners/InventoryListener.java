@@ -53,8 +53,6 @@ public class InventoryListener implements Listener
 					e.getWhoClicked().openInventory(InventoryUtil.buildPerkInventory((Player) e.getWhoClicked()));
 					perkCount.put(e.getWhoClicked().getUniqueId(), perkCount.get(e.getWhoClicked().getUniqueId()) + 1);
 
-					System.out.println(perkCount.get(e.getWhoClicked().getUniqueId()));
-
 					if (perkCount.get(e.getWhoClicked().getUniqueId()) >= 3)
 					{
 						e.getWhoClicked().openInventory(InventoryUtil.buildStreakInventory((Player) e.getWhoClicked()));
@@ -80,6 +78,7 @@ public class InventoryListener implements Listener
 			return;
 		}
 
+		
 		e.setCancelled(true);
 
 		ItemStack i = e.getCurrentItem();
@@ -95,9 +94,16 @@ public class InventoryListener implements Listener
 				{
 					p.streakHolder.add(e.getWhoClicked().getUniqueId());
 
+					System.out.println("Added");
+					
 					e.getWhoClicked().openInventory(InventoryUtil.buildStreakInventory((Player) e.getWhoClicked()));
+					System.out.println("Built");
 					ksCount.put(e.getWhoClicked().getUniqueId(), ksCount.get(e.getWhoClicked().getUniqueId()) + 1);
 
+					System.out.println("put");
+					
+					System.out.println(ksCount.get(e.getWhoClicked().getUniqueId()));
+					
 					if (ksCount.get(e.getWhoClicked().getUniqueId()) >= 3)
 					{
 						e.getWhoClicked().closeInventory();
