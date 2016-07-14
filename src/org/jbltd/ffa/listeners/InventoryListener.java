@@ -95,7 +95,7 @@ public class InventoryListener implements Listener
 				{
 					p.streakHolder.add(e.getWhoClicked().getUniqueId());
 
-					e.getWhoClicked().openInventory(InventoryUtil.buildPerkInventory((Player) e.getWhoClicked()));
+					e.getWhoClicked().openInventory(InventoryUtil.buildStreakInventory((Player) e.getWhoClicked()));
 					ksCount.put(e.getWhoClicked().getUniqueId(), ksCount.get(e.getWhoClicked().getUniqueId()) + 1);
 
 					if (ksCount.get(e.getWhoClicked().getUniqueId()) >= 3)
